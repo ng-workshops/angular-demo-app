@@ -1,0 +1,10 @@
+<mat-form-field>
+  <input #field="ngModel" type="text" matInput appFloatValidator [(ngModel)]="input" (ngModelChange)="parseToFloat($event)" placeholder="{{placeholder}}"
+  />
+  <span matPrefix>$&nbsp;</span>
+
+  <mat-error *ngIf="field.invalid">
+    Please enter a valid number
+  </mat-error>
+</mat-form-field>
+
