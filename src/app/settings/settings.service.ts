@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Settings, Theme } from './settings.model';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, tap } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject, throwError } from 'rxjs';
 
 @Injectable()
 export class SettingsService {
@@ -14,17 +13,18 @@ export class SettingsService {
 
   private readonly ENDPOINT = '/api/settings';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   get() {
     return this.httpClient.get<Settings>(this.ENDPOINT);
   }
 
   set(settings: Settings) {
-    return this.httpClient.post<Settings>(this.ENDPOINT, settings)
+    return this.httpClient
+      .post<Settings>(this.ENDPOINT, settings)
       .pipe(
-      tap(_ => this.themeListener.next(settings.theme)),
-      catchError(this.handleError)
+        tap(_ => this.themeListener.next(settings.theme)),
+        catchError(this.handleError)
       );
   }
 
@@ -36,11 +36,10 @@ export class SettingsService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
-    // return an ErrorObservable with a user-facing error message
-    return new ErrorObservable(
-      'Something bad happened; please try again later.');
+    // return an Error with a user-facing error message
+    return throwError('Something bad happened; please try again later.');
   }
 }

@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, map, pluck } from 'rxjs/operators';
 import { ProductsService } from '../products.service';
 import { Product } from '../product.model';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -19,10 +18,10 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productsService: ProductsService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.data.subscribe(data => this.product = data.product);
+    this.route.data.subscribe(data => (this.product = data.product));
 
     // this.product$ = this.route.data.pipe(
     //   pluck('product')
@@ -30,8 +29,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   save() {
-    this.productsService.update(this.product)
-      .subscribe(_ => this.cancel());
+    this.productsService.update(this.product).subscribe(_ => this.cancel());
   }
 
   cancel() {

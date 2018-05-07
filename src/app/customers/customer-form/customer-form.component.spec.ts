@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomerFormComponent } from './customer-form.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { MatSnackBar } from '@angular/material';

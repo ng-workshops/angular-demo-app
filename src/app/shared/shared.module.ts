@@ -39,7 +39,8 @@ import { JoinPipe } from './pipes/join.pipe';
     MatRadioModule,
     MatIconModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CanClickDirective
   ],
   providers: []
 })

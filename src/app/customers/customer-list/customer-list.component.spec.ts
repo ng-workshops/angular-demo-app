@@ -4,7 +4,7 @@ import { CustomerListComponent } from './customer-list.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 
 describe('CustomerListComponent', () => {
   let component: CustomerListComponent;

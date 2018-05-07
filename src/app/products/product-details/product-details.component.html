@@ -14,5 +14,6 @@
   <p>
     <button mat-raised-button color="primary" (click)="save()">Save</button>
     <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button appCanClick (canClick)="cancel()">Delete</button>
   </p>
 </div>

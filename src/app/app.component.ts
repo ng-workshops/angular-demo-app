@@ -12,14 +12,16 @@ export class AppComponent implements OnInit {
   @HostBinding('class') currentTheme = 'light';
   title = 'app';
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(private settingsService: SettingsService) {}
 
   ngOnInit() {
-    this.settingsService.themeChanged$.subscribe(theme => this.currentTheme = theme);
+    this.settingsService.themeChanged$.subscribe(
+      theme => (this.currentTheme = theme)
+    );
   }
 
   // change the animation state
-  getRouteAnimation(outlet) {
+  getRouteAnimation(outlet: any) {
     return '';
     // return new Date().toString();
   }

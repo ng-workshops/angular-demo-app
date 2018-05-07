@@ -4,7 +4,7 @@ import { ProductDetailsComponent } from './product-details.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../products.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;

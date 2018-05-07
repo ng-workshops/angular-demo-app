@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.model';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subject ,  BehaviorSubject ,  merge ,  combineLatest } from 'rxjs';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap, startWith, withLatestFrom, map } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { merge } from 'rxjs/observable/merge';
-import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
   selector: 'app-customer-list',

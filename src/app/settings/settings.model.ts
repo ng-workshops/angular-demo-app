@@ -18,8 +18,8 @@ export class Settings {
   theme: Theme;
   isAdmin = false;
   password: {
-    value: string,
-    repeat?: string
+    value: string;
+    repeat?: string;
   };
   rights: string[] = [];
   salary: number;
@@ -30,16 +30,25 @@ export class Settings {
 
     const formBuilder = new FormBuilder();
 
-    return formBuilder.group({
-      theme: formBuilder.control(settings.theme),
-      isAdmin: formBuilder.control(settings.isAdmin),
-      salary: formBuilder.control(settings.salary, floatValidator()),
-      password: formBuilder.group({
-        value: formBuilder.control(settings.password.value, Validators.minLength(6)),
-        repeat: formBuilder.control(settings.password.repeat, Validators.minLength(6))
-      }),
-      rights: formBuilder.array(settings.rights || [])
-    }, { validator: passwordMatchesValidator });
+    return formBuilder.group(
+      {
+        theme: formBuilder.control(settings.theme),
+        isAdmin: formBuilder.control(settings.isAdmin),
+        salary: formBuilder.control(settings.salary, floatValidator()),
+        password: formBuilder.group({
+          value: formBuilder.control(
+            settings.password.value,
+            Validators.minLength(6)
+          ),
+          repeat: formBuilder.control(
+            settings.password.repeat,
+            Validators.minLength(6)
+          )
+        }),
+        rights: formBuilder.array(settings.rights || [])
+      },
+      { validator: passwordMatchesValidator }
+    );
   }
 }
 
