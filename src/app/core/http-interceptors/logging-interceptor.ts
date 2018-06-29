@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 import { tap, finalize } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LoggingInterceptor implements HttpInterceptor {
   constructor() { }
 

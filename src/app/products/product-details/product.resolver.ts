@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { Product } from '../product.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductResolver implements Resolve<Product> {
   constructor(
     private productsService: ProductsService

@@ -8,7 +8,9 @@ import {
 
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TrimInterceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,

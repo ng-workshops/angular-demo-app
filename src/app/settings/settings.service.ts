@@ -4,7 +4,9 @@ import { Settings, Theme } from './settings.model';
 import { catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SettingsService {
   /* tslint:disable */
   private themeListener = new Subject<Theme>();

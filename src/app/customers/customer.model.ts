@@ -6,6 +6,7 @@ export class Customer {
   numberOfOrders = 0;
 
   firstname?: string;
+  hobbies?: string[];
 
   static toFormGroup(customer = new Customer()) {
     const formBuilder = new FormBuilder();

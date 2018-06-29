@@ -4,7 +4,9 @@ import { Settings } from './settings.model';
 import { Observable } from 'rxjs';
 import { SettingsService } from './settings.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SettingsResolver implements Resolve<Settings> {
   constructor(
     private settingsService: SettingsService

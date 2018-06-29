@@ -1,10 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { SettingsService } from '../settings/settings.service';
 
-const providers = [
-  SettingsService
-];
+const providers = [];
 
 @NgModule({
   providers,

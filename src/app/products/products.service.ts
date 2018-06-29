@@ -4,7 +4,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from './product.model';
 import { environment } from '../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductsService {
   private readonly endpoint = environment.endpoints.products;
 
