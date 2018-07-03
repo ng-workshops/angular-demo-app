@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../customer.model';
-import { Observable ,  Subject ,  BehaviorSubject ,  merge ,  combineLatest } from 'rxjs';
-import { CustomerService } from '../customer.service';
-import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, switchMap, startWith, withLatestFrom, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { merge, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, startWith, switchMap, withLatestFrom } from 'rxjs/operators';
+import { Customer } from '../customer.model';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-customer-list',
