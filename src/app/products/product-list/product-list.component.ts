@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -13,29 +13,39 @@ import { FormControl } from '@angular/forms';
 export class ProductListComponent implements OnInit {
   products: Product[];
   selectedProductId: number;
+  displayedColumns = ['id', 'name', 'price'];
   searchTerm = new FormControl();
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.loadProducts();
-      })
-    )
-      .subscribe(products => this.products = products);
+    this.route.paramMap
+      .pipe(
+        switchMap(params => {
+          return this.loadProducts();
+        }),
+        startWith([]),
+      )
+      .subscribe(products => (this.products = products));
 
-    this.searchTerm.valueChanges.pipe(
-      debounceTime(400),
-      distinctUntilChanged(),
-      switchMap(value => {
-        return this.loadProducts(value);
-      })
-    )
-      .subscribe(products => this.products = products);
+    this.searchTerm.valueChanges
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap(value => {
+          return this.loadProducts(value);
+        })
+      )
+      .subscribe(products => (this.products = products));
+  }
+
+  getTotal() {
+    return this.products
+      .map(p => p.price)
+      .reduce((acc, value) => acc + value, 0);
   }
 
   private loadProducts(searchTerm?: string) {
