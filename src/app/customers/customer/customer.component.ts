@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
-import { Customer } from '../customer.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Customer } from '../customer.model';
 
 @Component({
   selector: 'app-customer',
@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-  @HostBinding('class.customers') hostStyle = true;
-
   @Input() customer: Customer;
 
   @Output() deleteCustomer = new EventEmitter<number>();

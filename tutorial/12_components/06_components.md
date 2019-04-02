@@ -1,6 +1,31 @@
+# 6 Component interaction - @ViewChild()
+
+## src/app/home/home.component.html
+
+```html
+<p>
+  <button (click)="changeChild()">Change Child data</button>
+  <button (click)="child.name = 'Changed BY PARENT'">
+    Change Child via Template Var
+  </button>
+  <button (click)="processReplyFromCode()">Change Child via ViewChild</button>
+</p>
+
+<app-info-box
+  #child
+  [message]="message"
+  [name]="name"
+  (replyToParent)="processReply($event)"
+></app-info-box>
+
+<pre>Message from Child = {{ reply | json }}</pre>
+```
+
+## src/app/home/home.component.ts
+
+```ts
 import { Component, ViewChild } from '@angular/core';
 import { InfoBoxComponent } from './info-box/info-box.component';
-import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +33,12 @@ import { MessageService } from './message.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  user = {
-    id: 1,
-    name: 'Chuck Norris',
-    showSecret: false,
-    hobbies: ['eat', 'sleep', 'drink']
-  };
-
   message = 'INIT';
   name = 'START_';
   reply = '';
 
   @ViewChild('child')
   private child: InfoBoxComponent;
-
-  constructor(private messageService: MessageService) {}
 
   changeChild() {
     this.message = new Date().toISOString();
@@ -36,12 +52,5 @@ export class HomeComponent {
   processReplyFromCode() {
     this.child.reply('Send from parent via CODE');
   }
-
-  sendMessage() {
-    this.messageService.sendMessage('Send from parent via service');
-  }
-
-  callMe(phone: string) {
-    alert(phone);
-  }
 }
+```
