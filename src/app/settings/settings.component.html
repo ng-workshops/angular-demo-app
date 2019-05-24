@@ -13,12 +13,21 @@
   </div>
 
   <div class="form-row">
-    <app-input-float formControlName="salary" placeholder="Salary" name="salary"></app-input-float>
+    <app-input-float
+      formControlName="salary"
+      placeholder="Salary"
+      name="salary"
+    ></app-input-float>
   </div>
 
   <div class="form-row" formGroupName="password">
     <mat-form-field>
-      <input type="password" matInput placeholder="Password with min 6 chars" formControlName="value" />
+      <input
+        type="password"
+        matInput
+        placeholder="Password with min 6 chars"
+        formControlName="value"
+      />
       <mat-error *ngIf="form.get('password.value').hasError('not_equal')">
         Passwords must be
         <strong>equal</strong>
@@ -26,18 +35,28 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input type="password" matInput placeholder="Password again" formControlName="repeat" />
+      <input
+        type="password"
+        matInput
+        placeholder="Password again"
+        formControlName="repeat"
+      />
     </mat-form-field>
   </div>
 
   <div class="form-row" formArrayName="rights">
     <label>Access Rights</label>
-    <span>({{ form.get('rights').value | appJoin:'+' }})</span>
+    <span>({{ form.get('rights').value | appJoin: '+' }})</span>
     <br />
     <button type="button" (click)="addRight()">
       <i class="material-icons md-12">add</i>
     </button>
-    <div *ngFor="let rightsControl of form.get('rights')['controls']; let i = index;">
+    <div
+      *ngFor="
+        let rightsControl of form.get('rights')['controls'];
+        let i = index
+      "
+    >
       <mat-form-field>
         <input matInput [formControlName]="i" />
       </mat-form-field>

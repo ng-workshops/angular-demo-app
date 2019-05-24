@@ -4,12 +4,12 @@ import { environment } from '../../environments/environment';
 import { Customer } from './customer.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CustomerService {
   private readonly endpoint = environment.endpoints.customers;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getAll(searchTerm = '') {
     // add search param

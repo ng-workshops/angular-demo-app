@@ -30,14 +30,8 @@ registerLocaleData(localeDe, 'de');
     CustomersModule,
     AppRoutingModule
   ],
-  declarations: [
-    AppComponent
-  ],
-  providers: [
-    httpInterceptorProviders,
-    { provide: LOCALE_ID, useValue: 'de' }
-  ],
+  declarations: [AppComponent],
+  providers: [httpInterceptorProviders, { provide: LOCALE_ID, useValue: 'de' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
-
+export class AppModule {}

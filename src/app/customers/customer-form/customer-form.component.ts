@@ -19,7 +19,7 @@ export class CustomerFormComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.form = Customer.toFormGroup();
@@ -37,14 +37,15 @@ export class CustomerFormComponent implements OnInit {
   submit() {
     const data = this.form.getRawValue();
     const save$ = data.id
-      ? this.customerService.update.bind(this.customerService) :
-      this.customerService.create.bind(this.customerService);
+      ? this.customerService.update.bind(this.customerService)
+      : this.customerService.create.bind(this.customerService);
 
-    save$(data)
-      .subscribe(_ => {
-        this.snackBar.open(`Customer ${data.name} saved successfully.`, '', { duration: 2000 });
-        this.cancel();
+    save$(data).subscribe(_ => {
+      this.snackBar.open(`Customer ${data.name} saved successfully.`, '', {
+        duration: 2000
       });
+      this.cancel();
+    });
   }
 
   cancel() {

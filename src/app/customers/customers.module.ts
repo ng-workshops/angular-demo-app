@@ -9,11 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CustomerStatusPipe } from './customer-status.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CustomersRoutingModule,
-    SharedModule
-  ],
+  imports: [CommonModule, CustomersRoutingModule, SharedModule],
   declarations: [
     CustomerComponent,
     CustomerDetailsComponent,
@@ -22,4 +18,4 @@ import { CustomerStatusPipe } from './customer-status.pipe';
     CustomerStatusPipe
   ]
 })
-export class CustomersModule { }
+export class CustomersModule {}

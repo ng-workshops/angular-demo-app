@@ -18,12 +18,12 @@ export function getFloat(value: string, numberOfDigits = 2) {
 }
 
 export function roundToDecimal(num: number, decimal: number) {
-  let zeros = 1.0.toFixed(decimal);
+  let zeros = (1.0).toFixed(decimal);
   zeros = zeros.substr(2);
   const mul_div = parseInt('1' + zeros, 10);
   const increment = parseFloat('.' + zeros + '01');
 
-  if (num * (mul_div * 10) % 10 >= 5) {
+  if ((num * (mul_div * 10)) % 10 >= 5) {
     num += increment;
   }
 
@@ -40,5 +40,7 @@ export function cutToDecimal(num: number, decimal: number) {
   decimal = Math.floor(decimal);
 
   const multiplier = Math.pow(10, decimal);
-  return (Math.floor(parseFloat(num.toString()) * multiplier) / multiplier).toFixed(decimal);
+  return (
+    Math.floor(parseFloat(num.toString()) * multiplier) / multiplier
+  ).toFixed(decimal);
 }

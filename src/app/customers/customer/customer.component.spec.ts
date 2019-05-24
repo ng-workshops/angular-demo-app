@@ -12,12 +12,9 @@ describe('CustomerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CustomerComponent, CustomerStatusPipe],
-      providers: [
-        { provide: Router, useValue: {} },
-      ],
+      providers: [{ provide: Router, useValue: {} }],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

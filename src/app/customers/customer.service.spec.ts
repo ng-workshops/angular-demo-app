@@ -6,14 +6,14 @@ import { HttpClient } from '@angular/common/http';
 describe('CustomerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        CustomerService,
-        { provide: HttpClient, useValue: {} }
-      ],
+      providers: [CustomerService, { provide: HttpClient, useValue: {} }]
     });
   });
 
-  it('should be created', inject([CustomerService], (service: CustomerService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', inject(
+    [CustomerService],
+    (service: CustomerService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
 });

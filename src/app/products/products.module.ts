@@ -8,10 +8,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductEmptyComponent } from './product-empty/product-empty.component';
 
 @NgModule({
-  imports: [
-    ProductsRoutingModule,
-    SharedModule
-  ],
+  imports: [ProductsRoutingModule, SharedModule],
   declarations: [
     ProductsComponent,
     ProductListComponent,
@@ -19,4 +16,4 @@ import { ProductEmptyComponent } from './product-empty/product-empty.component';
     ProductEmptyComponent
   ]
 })
-export class ProductsModule { }
+export class ProductsModule {}

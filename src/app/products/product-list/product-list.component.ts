@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  startWith,
+  switchMap
+} from 'rxjs/operators';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
 
@@ -27,7 +32,7 @@ export class ProductListComponent implements OnInit {
         switchMap(params => {
           return this.loadProducts();
         }),
-        startWith([]),
+        startWith([])
       )
       .subscribe(products => (this.products = products));
 

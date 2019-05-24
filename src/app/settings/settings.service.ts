@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SettingsService {
   /* tslint:disable */
@@ -22,12 +22,10 @@ export class SettingsService {
   }
 
   set(settings: Settings) {
-    return this.httpClient
-      .post<Settings>(this.ENDPOINT, settings)
-      .pipe(
-        tap(_ => this.themeListener.next(settings.theme)),
-        catchError(this.handleError)
-      );
+    return this.httpClient.post<Settings>(this.ENDPOINT, settings).pipe(
+      tap(_ => this.themeListener.next(settings.theme)),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

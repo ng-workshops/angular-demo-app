@@ -12,7 +12,6 @@ describe('CustomerListComponent', () => {
   // let customerServiceSpy: jasmine.SpyObj<CustomerService>;
   let customerServiceSpy: any;
 
-
   beforeEach(async(() => {
     // const spy = jasmine.createSpyObj('CustomerService', ['getAll']);
     const spy = { getAll: () => of([]) };
@@ -24,8 +23,7 @@ describe('CustomerListComponent', () => {
         { provide: CustomerService, useValue: spy }
       ],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
 
     customerServiceSpy = TestBed.get(CustomerService);
   }));

@@ -4,7 +4,13 @@ import { floatValidator } from './float.validator';
 
 @Directive({
   selector: '[appFloatValidator]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: FloatValidatorDirective, multi: true }]
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: FloatValidatorDirective,
+      multi: true
+    }
+  ]
 })
 export class FloatValidatorDirective implements Validator {
   validate(control: AbstractControl): { [key: string]: any } {

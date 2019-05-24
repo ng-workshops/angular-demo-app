@@ -5,12 +5,12 @@ import { Product } from './product.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductsService {
   private readonly endpoint = environment.endpoints.products;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getAll(searchTerm = '') {
     // add search param

@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TrimInterceptor implements HttpInterceptor {
   intercept(

@@ -8,10 +8,15 @@ import { E2EHostComponent } from '../e2e-host/e2e-host.component';
   templateUrl: './input-float.component.html',
   styleUrls: ['./input-float.component.scss'],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => InputFloatComponent) }
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => InputFloatComponent)
+    }
   ]
 })
-export class InputFloatComponent extends E2EHostComponent implements OnInit, ControlValueAccessor {
+export class InputFloatComponent extends E2EHostComponent
+  implements OnInit, ControlValueAccessor {
   readonly attr_e2e = 'input-float';
 
   @Input() numberOfDigits: number;
@@ -62,7 +67,7 @@ export class InputFloatComponent extends E2EHostComponent implements OnInit, Con
     }
 
     // set internal input field value
-    this.input = viewValue || '';
+    this.input = viewValue || '';
   }
 
   /**
@@ -86,7 +91,7 @@ export class InputFloatComponent extends E2EHostComponent implements OnInit, Con
   set value(v: any) {
     // update value when new value is different
     // OR when both values are null (to trigger the _onChangeCallback() for validation)
-    if (v !== this._value || v === null && this._value === null) {
+    if (v !== this._value || (v === null && this._value === null)) {
       this._value = v;
 
       if (this._onChangeCallback) {
