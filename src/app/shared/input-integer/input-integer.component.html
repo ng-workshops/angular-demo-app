@@ -3,14 +3,15 @@
     #field="ngModel"
     type="text"
     matInput
-    appInputFloat
+    appIntegerValidator
     [(ngModel)]="input"
-    (ngModelChange)="parseToFloat($event)"
+    (ngModelChange)="parseToInt($event)"
     placeholder="{{ placeholder }}"
+    [name]="name"
   />
   <span matPrefix>$&nbsp;</span>
 
   <mat-error *ngIf="field.invalid">
-    Please enter a valid number
+    Please enter a valid integer
   </mat-error>
 </mat-form-field>

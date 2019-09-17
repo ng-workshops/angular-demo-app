@@ -1,19 +1,19 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
-import { floatValidator } from './float.validator';
+import { integerValidator } from './integer.validator';
 
 @Directive({
-  selector: '[appFloatValidator]',
+  selector: '[appIntegerValidator]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: FloatValidatorDirective,
+      useExisting: IntegerValidatorDirective,
       multi: true
     }
   ]
 })
-export class FloatValidatorDirective implements Validator {
+export class IntegerValidatorDirective implements Validator {
   validate(control: AbstractControl): { [key: string]: any } {
-    return floatValidator()(control);
+    return integerValidator()(control);
   }
 }

@@ -1,20 +1,22 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { InfoItemComponent } from './info-item.component';
+import { InputFloatComponent } from './input-float.component';
 
-describe('InfoItemComponent', () => {
-  let component: InfoItemComponent;
-  let fixture: ComponentFixture<InfoItemComponent>;
+describe('InputFloatComponent', () => {
+  let component: InputFloatComponent;
+  let fixture: ComponentFixture<InputFloatComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [InputFloatComponent],
       imports: [FormsModule],
-      declarations: [InfoItemComponent]
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoItemComponent);
+    fixture = TestBed.createComponent(InputFloatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
 export const FLOAT_REGEX = /^\-?\d+((\.|,)?(\d+)?)?$/;
+export const INTEGER_REGEX = /^\-?\d+$/;
 
 export function isEmpty(arg: any) {
   return arg === '' || arg === null || arg === undefined;
@@ -13,8 +14,21 @@ export function getFloat(value: string, numberOfDigits = 2) {
     return roundToDecimal(parseFloat(value.replace(',', '.')), numberOfDigits);
   }
 
-  // return null;
-  return value.toString();
+  return null;
+  // return value.toString();
+}
+
+export function getInt(value: string) {
+  if (!value) {
+    return null;
+  }
+
+  if (INTEGER_REGEX.test(value)) {
+    return parseInt(value, 10);
+  }
+
+  return null;
+  // return value.toString();
 }
 
 export function roundToDecimal(num: number, decimal: number) {

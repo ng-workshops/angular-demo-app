@@ -1,34 +1,50 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatIconModule,
-  MatInputModule,
-  MatRadioModule,
-  MatSnackBarModule,
-  MatTableModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { CanClickDirective } from './directives/can-click.directive';
-import { FloatValidatorDirective } from './input-float/float.validator.directive';
 import { InputFloatComponent } from './input-float/input-float.component';
+import { InputFloatDirective } from './input-float/input-float.directive';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
+import { IntegerValidatorDirective } from './input-integer/integer.validator.directive';
+import { HostElementService } from './modal/host/host-element.service';
+import { ModalComponent } from './modal/modal.component';
 import { JoinPipe } from './pipes/join.pipe';
 
 @NgModule({
-  imports: [CommonModule, MatInputModule, FormsModule],
+  imports: [
+    CommonModule,
+    MatInputModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressBarModule
+  ],
   declarations: [
     CanClickDirective,
-    InputFloatComponent,
-    FloatValidatorDirective,
-    JoinPipe
+    InputIntegerComponent,
+    IntegerValidatorDirective,
+    JoinPipe,
+    ModalComponent,
+    InputFloatDirective,
+    InputFloatComponent
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    InputIntegerComponent,
+    IntegerValidatorDirective,
+    InputFloatDirective,
     InputFloatComponent,
-    FloatValidatorDirective,
     JoinPipe,
     MatButtonModule,
     MatCheckboxModule,
@@ -36,9 +52,12 @@ import { JoinPipe } from './pipes/join.pipe';
     MatIconModule,
     MatInputModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatProgressBarModule,
     MatTableModule,
     CanClickDirective
   ],
-  providers: []
+  providers: [HostElementService],
+  entryComponents: [ModalComponent]
 })
 export class SharedModule {}

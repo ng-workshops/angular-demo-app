@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 // Shared Services
 import { CoreModule } from './core/core.module';
 import { httpInterceptorProviders } from './core/http-interceptors';
-import { CustomersModule } from './customers/customers.module';
 // Feature Modules
+import { CustomersModule } from './customers/customers.module';
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';

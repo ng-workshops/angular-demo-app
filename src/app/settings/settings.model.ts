@@ -1,5 +1,5 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { floatValidator } from '../shared/input-float/float.validator';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { floatValidator } from '../shared/input-float/input-float.validator';
 
 function passwordMatchesValidator(form: FormGroup): null {
   const password = form.get('password.value');

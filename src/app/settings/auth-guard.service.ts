@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot,
+  CanActivate,
   CanLoad,
-  Route
+  Route,
+  RouterStateSnapshot
 } from '@angular/router';
 
 @Injectable({

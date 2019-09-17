@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup } from '@angular/forms/src/model';
 import { Settings } from './settings.model';
 import { SettingsService } from './settings.service';
-import { MatSnackBar } from '@angular/material';
-import { FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -29,13 +28,11 @@ export class SettingsComponent implements OnInit {
   }
 
   save() {
-    this.settingsService
-      .set(this.form.getRawValue())
-      .subscribe(_ =>
-        this.snackBar.open('Settings save successfully.', '', {
-          duration: 1000
-        })
-      );
+    this.settingsService.set(this.form.getRawValue()).subscribe(_ =>
+      this.snackBar.open('Settings save successfully.', '', {
+        duration: 1000
+      })
+    );
   }
 
   addRight() {

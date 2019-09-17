@@ -56,8 +56,9 @@ export class InfoBoxComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    // tslint:disable-next-line:no-unused-expression
-    this.subscription && this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   reply(message?: string) {

@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { getFloat, cutToDecimal } from '../utils/utils';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { E2EHostComponent } from '../e2e-host/e2e-host.component';
+import { cutToDecimal, getFloat } from '../utils/utils';
 
 @Component({
   selector: 'app-input-float',
@@ -15,17 +14,18 @@ import { E2EHostComponent } from '../e2e-host/e2e-host.component';
     }
   ]
 })
-export class InputFloatComponent extends E2EHostComponent
-  implements OnInit, ControlValueAccessor {
-  readonly attr_e2e = 'input-float';
+export class InputFloatComponent implements OnInit, ControlValueAccessor {
+  @Input()
+  numberOfDigits: number;
 
-  @Input() numberOfDigits: number;
+  @Input()
+  round: boolean;
 
-  @Input() round: boolean;
+  @Input()
+  placeholder: string;
 
-  @Input() placeholder: string;
-
-  @Input() name: string;
+  @Input()
+  name: string;
 
   input = '';
 

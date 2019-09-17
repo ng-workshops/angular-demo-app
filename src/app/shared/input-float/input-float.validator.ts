@@ -1,5 +1,5 @@
-import { ValidatorFn, AbstractControl } from '@angular/forms';
-import { isEmpty, FLOAT_REGEX } from '../utils/utils';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { FLOAT_REGEX, isEmpty } from '../utils/utils';
 
 export function floatValidator(): ValidatorFn {
   return (control: AbstractControl) => {
