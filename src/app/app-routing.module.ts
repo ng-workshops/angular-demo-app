@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'settings',
-    loadChildren: 'app/settings/settings.module#SettingsModule'
+    loadChildren: () =>
+      import('app/settings/settings.module').then(m => m.SettingsModule)
   },
   { path: '**', component: HomeComponent }
 ];

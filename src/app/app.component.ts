@@ -1,6 +1,8 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
-import { SettingsService } from './settings/settings.service';
+import { Component, HostBinding, OnInit, ViewContainerRef } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { fadeInAnimation } from './core/animations/fade-in-animation';
+import { SettingsService } from './settings/settings.service';
+import { HostElementService } from './shared/modal/host/host-element.service';
 
 @Component({
   animations: [fadeInAnimation],
@@ -9,10 +11,17 @@ import { fadeInAnimation } from './core/animations/fade-in-animation';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @HostBinding('class') currentTheme = 'light';
+  @HostBinding('class')
+  currentTheme = 'light';
   title = 'app';
 
-  constructor(private settingsService: SettingsService) {}
+  constructor(
+    private settingsService: SettingsService,
+    hostElementService: HostElementService,
+    hostElement: ViewContainerRef
+  ) {
+    hostElementService.setHost(hostElement);
+  }
 
   ngOnInit() {
     this.settingsService.themeChanged$.subscribe(
@@ -21,8 +30,11 @@ export class AppComponent implements OnInit {
   }
 
   // change the animation state
-  getRouteAnimation(outlet: any) {
-    return '';
-    // return new Date().toString();
+  getRouteAnimation(outlet: RouterOutlet) {
+    return (
+      outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData['animation']
+    );
   }
 }
